@@ -1,0 +1,163 @@
+.headBox {
+  height: 75vh;
+  width: 100%;
+  position: relative;
+}
+
+.headBox .cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  filter: blur(2.5px);
+}
+
+.headBox .sheet {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.52);
+  display: grid;
+  grid-template-rows: 2fr 8fr;
+}
+
+.topNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+}
+
+.topNav nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.topNav nav a {
+  color: white;
+}
+
+
+.conBox {
+  max-width: 50%;
+  margin: auto 0 auto auto;
+  color: white;
+}
+
+.conBox p {
+  display: grid;
+  gap: 1rem;
+}
+
+.conBox p strong {
+  font-size: 1.8rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.conBox p strong sub {
+  display: block;
+  width: 100px;
+  height: 3px;
+  background: var(--theme);
+}
+
+.conBox p a {
+  width: max-content;
+  padding: 7px;
+  color: var(--theme);
+  border: 2px solid var(--theme);
+  border-radius: 3px;
+  transition: 0.3s ease;
+}
+
+.conBox p a:hover {
+  background: var(--theme);
+  color: black;
+}
+
+.menuTag {
+  display: none;
+}
+
+@media all and (max-width:1100px) {
+  .conBox {
+    max-width: 100%;
+    margin: auto;
+    color: white;
+  }
+
+  .conBox p strong {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .conBox p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+  }
+}
+
+
+@media all and (max-width:650px) {
+  .headBox {
+    height: 50vh;
+    width: 100%;
+    position: relative;
+  }
+}
+
+@media all and (max-width:550px) {
+  .topNav {
+    justify-content: center;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+  }
+
+  .topNav nav {
+    position: fixed;
+    top: 0;
+    right: -170px;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: white;
+    width: 150px;
+    padding: 10px 10px;
+    transition: 0.3s ease;
+  }
+
+  .topNav nav.change {
+    right: 0;
+  }
+
+  .topNav nav a {
+    color: black;
+  }
+
+  .menuTag {
+    display: flex;
+    position: absolute;
+    background: salmon;
+    color: white;
+    width: 30px;
+    height: 30px;
+    top: 0;
+    right: 100%;
+  }
+}
+
+@media all and (max-width:300px) {
+  .headBox {
+    height: 70vh;
+  }
+}

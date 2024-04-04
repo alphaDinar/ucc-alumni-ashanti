@@ -1,95 +1,86 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Image from 'next/image';
+import styles from './home.module.css';
+import { goalList } from '@/External/lists';
+import Link from 'next/link';
+import { MdOutlineFavoriteBorder, MdOutlineSchedule } from 'react-icons/md';
+import Events from './Components/Events/Events';
+import Donations from './Components/Donations/Donations';
+import PayBox from './Components/PayBox/PayBox';
+import Footer from './Components/Footer/Footer';
+import HeadBox from './Components/HeadBox/HeadBox';
 
-export default function Home() {
+
+const Home = () => {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <main className={styles.home}>
+      <HeadBox />
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      <section className={styles.goalBox} id='box'>
+        <h3 className='headTag'>Our Goals</h3>
+        <section className={styles.goals}>
+          {goalList.map((goal, i) => (
+            <article key={i}>
+              <legend>
+                {goal.iconEl}
+              </legend>
+              <p>
+                <strong>{goal.tag}</strong>
+                <span>{goal.text}</span>
+              </p>
+            </article>
+          ))}
+        </section>
+      </section>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
+      <section className={styles.donateBox} style={{ background: 'black' }}>
+        <section className={styles.left} >
+          <div className={styles.imgBox}>
+            <Image alt='' className='cover' src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1711120263/ucc%20alumni/CSR_Icons_1920x1080_donation-request_zhcxlo.png'} fill sizes='auto' />
+          </div>
           <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
+            <strong>Featured Event</strong>
+            <span className='cash'>2000 <MdOutlineFavoriteBorder /></span>
           </p>
-        </a>
-      </div>
+        </section>
+        <section className={styles.right}>
+          <strong>School Homecoming</strong>
+          <small className='cash'><MdOutlineSchedule /> 3 weeks left</small>
+          <Link href={'/'}>View</Link>
+        </section>
+      </section>
+
+      <section className={styles.eventBox} id='box'>
+        <h3 className='headTag'>Events</h3>
+        <Events />
+      </section>
+
+      <section className={styles.donateBox}>
+        <section className={styles.left}>
+          <div className={styles.imgBox}>
+            <Image alt='' className='cover' src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1711120263/ucc%20alumni/CSR_Icons_1920x1080_donation-request_zhcxlo.png'} fill sizes='auto' />
+          </div>
+          <p>
+            <strong>Featured Donation</strong>
+            <span className='cash'>2000 <MdOutlineFavoriteBorder /></span>
+          </p>
+        </section>
+        <section className={styles.right}>
+          <strong>School Park Renovation</strong>
+          <small className='cash'><MdOutlineSchedule /> 3 weeks ago</small>
+          <Link href={'/'}>Donate</Link>
+        </section>
+      </section>
+
+      <section className={styles.eventBox} id='box'>
+        <h3 className='headTag'>Donations</h3>
+        <Donations />
+      </section>
+
+      <PayBox />
+
+      <Footer />
     </main>
   );
 }
+
+export default Home;

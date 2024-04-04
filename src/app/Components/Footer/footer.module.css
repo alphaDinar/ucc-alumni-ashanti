@@ -1,0 +1,110 @@
+.footerBox {
+  background: black;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.con {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 6fr 4fr;
+}
+
+.con {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+}
+
+.con article {
+  gap: 1rem;
+  display: grid;
+}
+
+.con article p {
+  gap: 0.5rem;
+  display: grid;
+}
+
+.con article p a {
+  color: white;
+}
+
+.con article strong {
+  color: darkgray;
+}
+
+.con legend {
+  display: flex;
+  margin: auto;
+  gap: 1rem;
+}
+
+.con legend a {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.con form {
+  margin-left: auto;
+  /* border: 1px solid white; */
+  display: grid;
+  width: 250px;
+  gap: 1rem;
+}
+
+/* .con from  */
+
+.con form div {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.con form textarea {
+  resize: none;
+  height: 100px;
+  padding: 10px;
+  background: wheat;
+}
+
+.con form span {
+  color: white;
+}
+
+.con form input {
+  background: wheat;
+  padding: 10px;
+}
+
+.con form button {
+  padding: 10px;
+  background: wheat;
+  color: black;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.footerBox hr {
+  border-top: 1px dotted wheat;
+  width: 100%;
+}
+
+@media all and (max-width:900px) {
+  .footerBox .con {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .footerBox .con>* {
+    margin: auto;
+  }
+  .footerBox article{
+    text-align: center;
+  }
+}
