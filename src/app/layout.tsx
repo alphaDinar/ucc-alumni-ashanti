@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { AuthTargetContextProvider } from "./contexts/authTargetContext";
+import TimerBox from "./Components/TimerBox/TimerBox";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <AuthTargetContextProvider>
           {children}
+          <TimerBox/>
         </AuthTargetContextProvider>
       </body>
     </html>

@@ -110,3 +110,27 @@ select {
     padding-left: 5%;
   }
 }
+
+.timerBox{
+  z-index: 10000;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  background: tomato;
+  color: white;
+  display: flex;
+  gap: 0.5rem;
+  padding: 5px 9px;
+  border-radius: 40px;
+  align-items: center;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.timerBox legend{
+  display: flex;
+  gap: 0.2rem;
+}
+
+.timerBox span{
+  font-family: 'Poppins', sans-serif;
+}
