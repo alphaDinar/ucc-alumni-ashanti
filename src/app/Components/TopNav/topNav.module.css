@@ -1,0 +1,63 @@
+.topNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  position: relative;
+  background: #AB7DF3;
+  background: #7F61F5;
+}
+
+.topNav nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.topNav nav a {
+  color: white;
+}
+
+.menuTag {
+  display: none;
+}
+
+
+@media all and (max-width:550px) {
+  .topNav {
+    justify-content: center;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+  }
+
+  .topNav nav {
+    position: fixed;
+    top: 0;
+    right: -170px;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: white;
+    width: 150px;
+    padding: 10px 10px;
+    transition: 0.3s ease;
+  }
+
+  .topNav nav.change {
+    right: 0;
+  }
+
+  .topNav nav a {
+    color: black;
+  }
+
+  .menuTag {
+    display: flex;
+    position: absolute;
+    background: salmon;
+    color: white;
+    width: 30px;
+    height: 30px;
+    top: 0;
+    right: 100%;
+  }
+}

@@ -23,7 +23,7 @@
 
 :root {
   --theme: white;
-  --secondary : orange;
+  --secondary: orange;
   --pass: rgb(23, 175, 99);
   --input: #E9E9ED;
 }
@@ -111,7 +111,7 @@ select {
   }
 }
 
-.timerBox{
+.timerBox {
   z-index: 10000;
   position: fixed;
   bottom: 10px;
@@ -126,11 +126,48 @@ select {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-.timerBox legend{
+.timerBox legend {
   display: flex;
   gap: 0.2rem;
 }
 
-.timerBox span{
+.timerBox span {
   font-family: 'Poppins', sans-serif;
+}
+
+@keyframes toggleHeight {
+  0% {
+    height: 10px;
+  }
+
+  50% {
+    height: 15px;
+  }
+
+  100% {
+    height: 20px;
+  }
+}
+
+.miniLoader {
+  display: flex;
+  gap: 0.5rem;
+  min-height: 20px;
+}
+
+.miniLoader sub {
+  display: block;
+  width: 10px;
+  height: 20px;
+  border-radius: 40px;
+  background: white;
+  animation: toggleHeight 0.5s infinite alternate ease-in-out;
+}
+
+.miniLoader sub:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.miniLoader sub:nth-child(3) {
+  animation-delay: 1s;
 }

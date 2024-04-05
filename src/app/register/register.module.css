@@ -1,240 +1,131 @@
+.registerBox {
+  display: grid;
+  gap: 2rem;
+}
+
 .formBox {
-  width: 100%;
-  /* height: 100vh; */
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
   display: grid;
-  /* grid-template-columns: 1fr 1.5fr; */
+  gap: 1.5rem;
+  padding-bottom: 3vh;
 }
 
-.left {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.statBox {
-  background: white;
-  padding: 20px;
-  z-index: 100;
-  display: grid;
-  gap: 0.5rem;
-}
-
-.statBox p {
-  display: grid;
-  grid-template-columns: 1fr 20px;
-  align-items: center;
-  gap: 1rem;
-}
-
-.statBox p sub {
-  display: block;
-  width: 15px;
-  height: 15px;
-  background: tomato;
-  border-radius: 50%;
-}
-
-.statBox span {
-  font-size: 0.9rem;
-}
-
-.left img {
-  object-fit: cover;
-}
-
-.right {
-  padding-top: 5vh;
-  padding-bottom: 5vh;
-  margin: auto;
-}
-
-.formBox form {
+.formBox h1 {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  padding-bottom: 2vh;
-}
-
-
-.contactRow {
-  display: grid;
-  grid-template-columns: 3fr 7fr;
   gap: 0.2rem;
 }
 
-.formBox form input {
-  padding: 10px 10px;
-  background: var(--input);
-  font-family: 'Poppins', sans-serif;
+.formBox h1 sub {
+  display: block;
+  height: 4px;
+  background: black;
+  width: 50px;
 }
 
-.formBox form select,
-.formBox form option {
-  padding: 10px;
-  background: var(--input);
-  font-family: 'Poppins', sans-serif;
-}
-
-.formBox form section,
-.formBox form section div {
-  display: flex;
-  flex-direction: column;
-}
-
-.formBox form section{
+.formBox form {
   display: grid;
-  align-items: flex-end;
-  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
 }
 
-.formBox form section div span {
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.formBox form div {
-  width: 280px;
-  max-width: 280px;
+.formBox .double {
   display: grid;
-  overflow: hidden;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr;
 }
 
-.formBox form section div {
+.formBox p {
+  display: grid;
   gap: 0.5rem;
 }
 
-.formBox form section {
-  gap: 1rem;
-}
-
-.formBox form button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.formBox p input,
+.formBox p select {
+  background: var(--input);
   padding: 8px;
-  color: white;
-  font-size: 1rem;
-  background: var(--theme);
-  background: var(--pass);
-  cursor: pointer;
 }
 
-.formBox form header {
-  display: flex;
-  width: 100%;
-  justify-content: flex-start;
-  align-items: center;
+.contactRow legend,
+.otpRow legend {
+  display: grid;
+  overflow: hidden;
   gap: 1rem;
 }
 
-.formBox form header svg {
-  font-size: 2rem;
-  color: black;
+.contactRow legend {
+  grid-template-columns: 100px 2fr 200px;
 }
 
-.formBox form footer {
+.otpRow legend {
+  grid-template-columns: 1fr 200px;
+}
+
+
+.contactRow legend sub,
+.otpRow legend sub {
+  background: #7F61F5;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.formBox hr {
   width: 100%;
-  border-top: 2px solid var(--pass);
-  padding: 3px 0;
-  border-bottom: 2px solid var(--pass);
-  display: flex;
-  justify-content: center;
+  border-top: 3px dotted gray;
 }
 
-.formBox form footer svg {
-  cursor: pointer;
-  font-size: 3rem;
+
+
+.feeBox {
+  background: salmon;
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 20px;
+  /* border-radius: 10px; */
 }
 
-.formBox form p {
-  display: flex;
+.feeBox span {
+  font-size: 1.1rem;
 }
 
-.formBox form p legend {
-  background: rgb(54, 126, 199);
-  display: flex;
-  align-items: center;
+
+.feeBox input {
+  width: 150px;
   padding: 10px;
-  cursor: pointer;
-  color: white;
-  justify-content: center;
+  font-size: 1.1rem;
 }
 
-.formBox form p sub {
-  display: block;
-  width: 50px;
-  color: white;
-  min-height: 40px;
+.feeBox input::-webkit-inner-spin-button {
+  display: none;
+}
+
+.formBox button {
+  padding: 10px;
   display: flex;
-  align-items: center;
   justify-content: center;
-}
-
-.formBox form p sub svg {
-  cursor: pointer;
-  font-size: 1.5rem;
+  background: var(--pass);
   color: white;
+  cursor: pointer;
 }
 
-@media all and (max-width:950px) {
-  .formBox form section{
-    display: grid;
+
+@media all and (max-width:750px) {
+  .formBox .double{
     grid-template-columns: 1fr;
   }
 }
 
-
-@media all and (max-width:850px) {
-  .formBox {
-    height: auto;
-    min-height: auto;
-    display: flex;
-    gap: 2rem;
-    flex-direction: column;
+@media all and (max-width:650px) {
+  .contactRow legend{
+    grid-template-columns: 2fr 7fr;
   }
-
-  .formBox .left {
-    height: 200px;
+  .contactRow legend sub, .otpRow legend sub{
+    padding: 10px;
   }
-
-  .right {
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-    margin: auto;
-  }
-
-}
-
-@media all and (max-width:500px) {
-  .contactRow {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 0.2rem;
-  }
-
-  .contactRow input {
-    max-width: 200px;
-  }
-}
-
-@media all and (max-width:400px) {
-  .contactRow input {
-    max-width: 100%;
-  }
-}
-
-@media all and (max-width:300px) {
-  .formBox form div {
-    width: 240px;
-    max-width: 240px;
-    display: grid;
+  .otpRow legend{
+    grid-template-columns: 1fr;
   }
 }
