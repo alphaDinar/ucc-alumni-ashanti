@@ -4,9 +4,9 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { fireAuth, fireStoreDB } from '@/Firebase/base';
 
 
-export const createPayLink = async (amount: number, email: string, donation : string) => {
-  const host = 'http://localhost:3000';
-  // const host = 'https://www.maqete.com';
+export const createPayLink = async (amount: number, email: string, donation: string) => {
+  // const host = 'http://localhost:3000';
+  const host = 'https://ucc-alumni-ashanti.vercel.app/';
   const url = "https://api.paystack.co/transaction/initialize";
 
   const data = {
@@ -44,7 +44,7 @@ export const createPayLink = async (amount: number, email: string, donation : st
           amount: realAmount,
           email: email,
           contact: member.contact,
-          donation : donation,
+          donation: donation,
           fullName: member.fullName,
           profession: member.profession,
           year: member.year,

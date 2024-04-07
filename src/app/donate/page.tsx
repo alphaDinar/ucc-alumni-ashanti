@@ -15,7 +15,7 @@ const Register = ({ searchParams }: { searchParams: { donation: string } }) => {
   const title = searchParams.donation;
 
   const [donation, setDonation] = useState(title);
-  const [fee, setFee] = useState(10);
+  const [fee, setFee] = useState(0);
 
   const donate = async () => {
     setFormLoading(true);
