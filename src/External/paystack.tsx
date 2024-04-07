@@ -1,11 +1,16 @@
 import axios from 'axios';
-export const createPayLink = async (amount: number) => {
+import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { onAuthStateChanged } from 'firebase/auth';
+import { fireAuth, fireStoreDB } from '@/Firebase/base';
+
+
+export const createPayLink = async (amount: number, email: string, donation : string) => {
   const host = 'http://localhost:3000';
   // const host = 'https://www.maqete.com';
   const url = "https://api.paystack.co/transaction/initialize";
 
   const data = {
-    email: "customer@email.com",
+    email: email,
     amount: amount,
     callback_url: `${host}`,
     metadata: { cancel_action: `${host}/register` }
@@ -19,10 +24,36 @@ export const createPayLink = async (amount: number) => {
     }
   })
 
+
+  const ref = response.data.data.reference;
   const payObj = {
     link: response.data.data.authorization_url,
-    ref: response.data.data.reference
+    ref: ref
   }
+
+  onAuthStateChanged(fireAuth, async (user) => {
+    if (user) {
+      const uid = user.uid;
+      const memberTemp = await getDoc(doc(fireStoreDB, 'Members/' + user.uid))
+      if (memberTemp.exists()) {
+        const member = memberTemp.data();
+        const realAmount = amount / 100;
+        const stamp = new Date().getTime();
+        await setDoc(doc(fireStoreDB, 'Payments/' + ref), {
+          uid: uid,
+          amount: realAmount,
+          email: email,
+          contact: member.contact,
+          donation : donation,
+          fullName: member.fullName,
+          profession: member.profession,
+          year: member.year,
+          payStatus: 0,
+          timestamp: stamp
+        })
+      }
+    }
+  });
 
   return payObj;
 }

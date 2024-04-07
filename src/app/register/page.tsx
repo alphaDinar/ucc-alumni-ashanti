@@ -12,6 +12,7 @@ import { checkContact, checkPassLength } from "@/External/auth";
 import { sendOTP, verifyOTP } from "@/External/arkesel";
 import { IoMdDoneAll } from "react-icons/io";
 import { createPayLink } from "@/External/paystack";
+import { yearList } from "@/External/lists";
 
 const Register = () => {
   const router = useRouter();
@@ -35,6 +36,7 @@ const Register = () => {
   const [contactExists, setContactExists] = useState(false);
   const [contactCorrect, setContactCorrect] = useState(false);
   const [contactVerified, setContactVerified] = useState(false);
+  const [passLength, setPassLength] = useState(false);
   const [passMatch, setPassMatch] = useState(false);
 
   const [password, setPassword] = useState('');
@@ -67,7 +69,7 @@ const Register = () => {
     setPassword(pass1);
     setConPassword(pass2);
 
-    // setPassLength(checkPassLength(pass1));
+    setPassLength(checkPassLength(pass1));
     // setPassSpecial(checkPassSpecial(pass1));
     // setPassUpper(checkPassUpper(pass1));
     // setPassLower(checkPassLower(pass1));
@@ -106,11 +108,11 @@ const Register = () => {
   }
 
   const createCustomer = async () => {
-    if (contactVerified && passMatch && !contactExists) {
+    if (passMatch && !contactExists && checkContact(phoneCode, contact)) {
       setFormLoading(true);
       const passKey = await makePassword(password);
-      const email = contactTemp + '@gmail.com';
-      createUserWithEmailAndPassword(fireAuth, email, passKey)
+      const loginEmail = contactTemp + '@gmail.com';
+      createUserWithEmailAndPassword(fireAuth, loginEmail, passKey)
         .then((user) => {
           const updatedContact = contactTemp;
           const fullName = firstName + ' ' + middleName + ' ' + surname;
@@ -149,7 +151,7 @@ const Register = () => {
       .then(async () => {
         if (fee > 0) {
           const total = fee * 100;
-          const payObj = await createPayLink(total);
+          const payObj = await createPayLink(total, email, 'General');
           router.push(payObj.link);
         } else {
           router.push('/');
@@ -172,8 +174,8 @@ const Register = () => {
               <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
             </p>
             <p>
-              <span>Middle Name *</span>
-              <input type="text" value={middleName} onChange={(e) => setMiddleName(e.target.value)} required />
+              <span>Middle Name</span>
+              <input type="text" value={middleName} onChange={(e) => setMiddleName(e.target.value)} />
             </p>
           </div>
           <div className={styles.double}>
@@ -193,7 +195,12 @@ const Register = () => {
             </p>
             <p>
               <span>Year *</span>
-              <input type="text" value={year} onChange={(e) => setYear(e.target.value)} required />
+              <select value={year} className="cash" onChange={(e) => setYear(e.target.value)} required>
+                <option hidden className="cash">Select Year</option>
+                {yearList.map((el, i) => (
+                  <option value={el} key={i} className="cash">{el}</option>
+                ))}
+              </select>
             </p>
           </div>
           <div className={styles.double}>
@@ -207,6 +214,23 @@ const Register = () => {
             </p>
           </div>
           <hr />
+          <div className={styles.statBox}>
+            <legend>
+              {contactExists ?
+                <span>Contact Already Exists</span>
+                :
+                <span>Contact Check</span>
+              }
+              <sub style={contactExists || !contactCorrect ? { background: 'tomato' } : { background: 'springgreen' }}></sub>
+            </legend>
+            <legend>
+              <span>Password Length</span> <sub style={passLength ? { background: 'springgreen' } : { background: 'tomato' }}></sub>
+            </legend>
+            <legend>
+              <span>Password Match</span> <sub style={passMatch ? { background: 'springgreen' } : { background: 'tomato' }}></sub>
+            </legend>
+          </div>
+          <hr />
           <p className={styles.contactRow}>
             <span>Contact *</span>
             <legend>
@@ -215,18 +239,18 @@ const Register = () => {
               </select>
               <input type="text" value={contact} readOnly={contactVerified} onChange={(e) => handleContact(e.target.value)} required />
 
-              <sub onClick={runOTP} style={contactVerified ? { pointerEvents: 'none' } : { pointerEvents: 'all' }}>
+              {/* <sub onClick={runOTP} style={contactVerified ? { pointerEvents: 'none' } : { pointerEvents: 'all' }}>
                 {contactVerified ?
                   <IoMdDoneAll />
                   :
                   <span >Verify Contact</span>
                 }
-              </sub>
+              </sub> */}
             </legend>
             <small className="cash" style={{ color: 'tomato' }}>Please use a valid contact (contact would be used for login.)</small>
           </p>
 
-          {!contactVerified &&
+          {/* {!contactVerified &&
             <p className={styles.otpRow}>
               <span>Enter OTP</span>
               <legend>
@@ -234,7 +258,7 @@ const Register = () => {
                 <sub onClick={checkOTP}>Check OTP</sub>
               </legend>
             </p>
-          }
+          } */}
 
           <div className={styles.double}>
             <p>

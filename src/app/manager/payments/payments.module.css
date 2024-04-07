@@ -1,0 +1,86 @@
+.paymentBox header {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.paymentBox header h3 {
+  font-size: 1.5rem;
+}
+
+.paymentBox header div {
+  margin-left: auto;
+  display: flex;
+  gap: 1rem;
+}
+
+
+
+.paymentBox div input,
+.paymentBox div select {
+  background: var(--input);
+  padding: 5px 10px;
+}
+
+.payments {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.payment {
+  list-style: none;
+  display: grid;
+  padding: 10px;
+  align-items: center;
+  background: white;
+  border-radius: 10px;
+  gap: 1rem;
+  color: black;
+  grid-template-columns: 50px 1fr 1fr 1fr 0.5fr 2rem;
+}
+
+
+
+.payment img {
+  border-radius: 5px;
+}
+
+.payment p {
+  display: flex;
+  gap: 0.2rem;
+  flex-direction: column;
+}
+
+.payment p small {
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  color: gray;
+}
+
+.payment svg {
+  font-size: 2rem;
+}
+
+.payment .payBox {
+  display: block;
+  width: 30px;
+  height: 30px;
+  background: tomato;
+}
+
+@media all and (max-width:950px) {
+  .paymentBox header {
+    gap: 0.5rem;
+    grid-template-columns: 1fr;
+  }
+
+  .paymentBox header div {
+    margin-left: 0;
+    gap: 0.4rem;
+    display: grid;
+  }
+
+  .payment {
+    gap: 0.5rem;
+    grid-template-columns: 1fr;
+  }
+}

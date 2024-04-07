@@ -16,7 +16,7 @@ export const joinContact = (contact: string) => {
 
 
 export const checkPassLength = (pass: string) => {
-  const isValid = /.{8,}/.test(pass);
+  const isValid = /.{6,}/.test(pass);
   return isValid;
 }
 

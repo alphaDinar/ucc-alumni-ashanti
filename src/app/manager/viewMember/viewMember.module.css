@@ -1,0 +1,101 @@
+.memberBox header {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.memberBox header h3 {
+  font-size: 1.5rem;
+}
+
+.memberBox header div {
+  margin-left: auto;
+  display: flex;
+  gap: 1rem;
+}
+
+
+
+.memberBox div input,
+.memberBox div select {
+  background: var(--input);
+  padding: 5px 10px;
+}
+
+.members {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.member {
+  list-style: none;
+  display: grid;
+  padding: 10px;
+  align-items: center;
+  background: white;
+  border-radius: 10px;
+  gap: 1rem;
+  color: black;
+  grid-template-columns: 1fr;
+  /* grid-template-columns: 50px 1fr 1fr 1fr 0.5fr 2rem; */
+}
+
+
+
+.member img {
+  border-radius: 5px;
+}
+
+.member p{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 1rem;
+}
+
+.member span, .member strong{
+  font-size: 1.1rem;
+}
+.member svg{
+  font-size: 1.5rem;
+}
+
+/* .member p {
+  display: flex;
+  gap: 0.2rem;
+  flex-direction: column;
+}
+
+.member p small {
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  color: gray;
+} */
+
+/* .member svg {
+  font-size: 2rem;
+} */
+
+.member .payBox {
+  display: block;
+  width: 30px;
+  height: 30px;
+  background: tomato;
+}
+
+@media all and (max-width:950px) {
+  .memberBox header {
+    gap: 0.5rem;
+    grid-template-columns: 1fr;
+  }
+
+  .memberBox header div {
+    margin-left: 0;
+    gap: 0.4rem;
+    display: grid;
+  }
+
+  .member {
+    gap: 0.5rem;
+    grid-template-columns: 1fr;
+  }
+}

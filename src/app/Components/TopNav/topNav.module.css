@@ -2,16 +2,27 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+
   padding-top: 2vh;
   padding-bottom: 2vh;
-  position: relative;
   background: #AB7DF3;
-  background: #7F61F5;
+  /* background: #7F61F5; */
 }
+
+.cover{
+  object-fit: cover;
+  object-position: top;
+  filter: brightness(50%);
+  z-index: 10;
+}
+
 
 .topNav nav {
   display: flex;
+  align-items: center;
   gap: 1.5rem;
+  z-index: 100;
 }
 
 .topNav nav a {
@@ -22,6 +33,18 @@
   display: none;
 }
 
+.panel{
+  display: none;
+  width: 300px;
+  height: 90vh;
+  padding: 5vh 20px;
+  z-index: 100;
+  background: white;
+  position: fixed;
+  top: 0;
+  right: 0;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
 
 @media all and (max-width:550px) {
   .topNav {

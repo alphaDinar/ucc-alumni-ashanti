@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { AuthTargetContextProvider } from "./contexts/authTargetContext";
 import TimerBox from "./Components/TimerBox/TimerBox";
+import { MemberContextProvider } from "./contexts/memberContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,10 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AuthTargetContextProvider>
+        <MemberContextProvider>
           {children}
-          <TimerBox/>
-        </AuthTargetContextProvider>
+          <TimerBox />
+        </MemberContextProvider>
       </body>
     </html>
   );

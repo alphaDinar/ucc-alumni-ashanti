@@ -111,16 +111,15 @@
 .feeBox {
   background: salmon;
   width: max-content;
-  background: var(--pass);
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   padding: 20px;
+  /* border-radius: 10px; */
 }
 
 .feeBox span {
   font-size: 1.1rem;
-  color: white;
 }
 
 
@@ -132,13 +131,6 @@
 
 .feeBox input::-webkit-inner-spin-button {
   display: none;
-}
-
-.extraBox{
-  background: var(--input);
-  padding: 10px;
-  height: 60px;
-  resize: none;
 }
 
 .formBox button {

@@ -58,7 +58,7 @@ const Members = () => {
 
         <section className={styles.members}>
           {members.map((member, i) => (
-            <Link href={''} className={styles.member} key={i}>
+            <Link href={{ pathname: '/manager/viewMember', query: { member: JSON.stringify(member) } }} className={styles.member} key={i}>
               <Image src={person} alt="" className="cover" width={50} height={50} />
               <p>
                 <strong>{member.fullName}</strong>

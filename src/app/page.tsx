@@ -10,10 +10,10 @@ import Footer from './Components/Footer/Footer';
 import HeadBox from './Components/HeadBox/HeadBox';
 
 
-const Home = () => {
+const Home = ({ searchParams }: { searchParams: { trxref: string, reference: string } }) => {
   return (
     <main className={styles.home}>
-      <HeadBox />
+      <HeadBox searchParams={searchParams} />
 
       <section className={styles.goalBox} id='box'>
         <h3 className='headTag'>Our Goals</h3>

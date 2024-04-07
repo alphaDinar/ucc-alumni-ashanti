@@ -43,7 +43,7 @@ const Panel = ({ children }: panelProps) => {
   ]
 
   const lowTagList = [
-    { tag: 'Payments', iconEl: <MdOutlineAnalytics />, target: '/manager/sales' },
+    { tag: 'Payments', iconEl: <MdOutlineAnalytics />, target: '/manager/payments' },
     // { tag: 'Customer Analytics', iconEl: <MdOutlineAnalytics />, target: '/manager/customers' },
     // { tag: 'Delivery Analytics', iconEl: <MdOutlineAnalytics />, target: '/manager/dispatch' },
   ]

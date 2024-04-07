@@ -149,6 +149,12 @@ select {
   }
 }
 
+#border{
+  border: 1px solid var(--theme);
+  padding: 5px;
+  border-radius: 5px;
+}
+
 .miniLoader {
   display: flex;
   gap: 0.5rem;

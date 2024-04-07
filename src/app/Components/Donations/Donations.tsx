@@ -8,8 +8,8 @@ const Donations = () => {
 
   return (
     <section className={styles.donations}>
-      {Array(3).fill('a').map((el,i) => (
-        <Link href={'/'} className={styles.donation} key={i}>
+      {Array(3).fill('a').map((el, i) => (
+        <Link href={{ pathname: '/donate', query: { donation: 'Hospital Construction' } }} className={styles.donation} key={i}>
           <div className={styles.imgBox}>
             <Image alt='event' src={place} fill sizes='auto' className='cover' />
           </div>
