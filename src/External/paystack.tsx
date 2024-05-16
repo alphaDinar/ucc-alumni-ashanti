@@ -18,7 +18,8 @@ export const createPayLink = async (amount: number, email: string, donation: str
 
   const response = await axios.post(url, data, {
     headers: {
-      Authorization: `Bearer sk_test_265acb9b86de46afa9b166773bf933aa4edb8438`,
+      Authorization: `Bearer sk_live_2699e2da35431299f2842ea3219fda056e83f5e9`,
+      // Authorization: `Bearer sk_test_265acb9b86de46afa9b166773bf933aa4edb8438`,
       // Authorization: `Bearer ${process.env.NEXT_PUBLIC_PAYSTACK_API_KEY}`,
       'Cache-Control': 'no-cache'
     }
@@ -63,7 +64,8 @@ export const verifyPayment = async (payRef: string) => {
 
   const response = await axios.get(url, {
     headers: {
-      Authorization: `Bearer sk_test_265acb9b86de46afa9b166773bf933aa4edb8438`,
+      Authorization: `Bearer sk_live_2699e2da35431299f2842ea3219fda056e83f5e9`,
+      // Authorization: `Bearer sk_test_265acb9b86de46afa9b166773bf933aa4edb8438`,
       // Authorization: `Bearer ${process.env.NEXT_PUBLIC_PAYSTACK_API_KEY}`,
       'Cache-Control': 'no-cache'
     }

@@ -6,7 +6,7 @@ import styles from './register.module.css';
 import { fireAuth, fireStoreDB, googleProvider } from '@/Firebase/base';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { collection, doc, getDoc, onSnapshot, setDoc } from 'firebase/firestore';
-import { makePassword } from "@/External/phoneBook";
+import { checkUser, makePassword } from "@/External/phoneBook";
 import { useRouter } from "next/navigation";
 import { checkContact, checkPassLength } from "@/External/auth";
 import { sendOTP, verifyOTP } from "@/External/arkesel";
@@ -70,40 +70,10 @@ const Register = () => {
     setConPassword(pass2);
 
     setPassLength(checkPassLength(pass1));
-    // setPassSpecial(checkPassSpecial(pass1));
-    // setPassUpper(checkPassUpper(pass1));
-    // setPassLower(checkPassLower(pass1));
-
     if (pass1 === pass2) {
       setPassMatch(true);
     } else {
       setPassMatch(false);
-    }
-  }
-
-  const runOTP = async () => {
-    if (checkContact(phoneCode, contact)) {
-      const res = await sendOTP(contactTemp);
-      if (res.status === 200) {
-        alert(`OTP sent to  +${contactTemp}`);
-      } else {
-        alert('Please try again');
-      }
-    } else {
-      console.log('z')
-    }
-  }
-
-  const checkOTP = async () => {
-    if (otp.length === 6) {
-      const res = await verifyOTP(contactTemp, otp);
-      if (res.status === 200) {
-        setContactVerified(true);
-      } else {
-        alert('wrong');
-      }
-    } else {
-      console.log('zzz');
     }
   }
 
@@ -132,12 +102,15 @@ const Register = () => {
             .then(() => {
               setDoc(doc(fireStoreDB, 'Blacklist/' + contactTemp), {})
                 .then(() => addToPhoneAuth(passKey))
-                .catch((error) => console.log(error));
+                .catch((error) => {
+                  console.log(error);
+                  alert('User has already been registered');
+                });
             })
-            .catch((error) =>{ 
+            .catch((error) => {
               console.log(error);
               alert('User has already been registered');
-        });
+            });
         })
     } else {
       setFormLoading(false);
@@ -152,6 +125,8 @@ const Register = () => {
       password: passKey
     })
       .then(async () => {
+        // const isCorrect = await checkUser(phoneCode + contact, password);
+        // if (isCorrect) {
         if (fee > 0) {
           const total = fee * 100;
           const payObj = await createPayLink(total, email, 'General');
@@ -159,6 +134,7 @@ const Register = () => {
         } else {
           router.push('/');
         }
+        // }
       })
       .catch((error) => console.log(error));
   }
@@ -241,27 +217,10 @@ const Register = () => {
                 <option value="233">+233</option>
               </select>
               <input type="text" value={contact} readOnly={contactVerified} onChange={(e) => handleContact(e.target.value)} required />
-
-              {/* <sub onClick={runOTP} style={contactVerified ? { pointerEvents: 'none' } : { pointerEvents: 'all' }}>
-                {contactVerified ?
-                  <IoMdDoneAll />
-                  :
-                  <span >Verify Contact</span>
-                }
-              </sub> */}
             </legend>
             <small className="cash" style={{ color: 'tomato' }}>Please use a valid contact (contact would be used for login.)</small>
           </p>
 
-          {/* {!contactVerified &&
-            <p className={styles.otpRow}>
-              <span>Enter OTP</span>
-              <legend>
-                <input type="text" value={otp} onChange={(e) => setOTP(e.target.value)} />
-                <sub onClick={checkOTP}>Check OTP</sub>
-              </legend>
-            </p>
-          } */}
 
           <div className={styles.double}>
             <p>
