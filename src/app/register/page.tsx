@@ -134,7 +134,10 @@ const Register = () => {
                 .then(() => addToPhoneAuth(passKey))
                 .catch((error) => console.log(error));
             })
-            .catch((error) => console.log(error));
+            .catch((error) =>{ 
+              console.log(error);
+              alert('User has already been registered');
+        });
         })
     } else {
       setFormLoading(false);

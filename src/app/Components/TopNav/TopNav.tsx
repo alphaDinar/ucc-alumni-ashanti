@@ -9,8 +9,10 @@ import { useMember } from '@/app/contexts/memberContext';
 import { signOut } from 'firebase/auth';
 import { fireAuth } from '@/Firebase/base';
 import cover from '../../../../public/cover.jpg';
+import { useRouter } from 'next/navigation';
 
 const TopNav = () => {
+  const router = useRouter();
   const [menuToggled, setMenuToggled] = useState(false);
   const { member } = useMember();
 
@@ -26,7 +28,7 @@ const TopNav = () => {
   return (
     <section className={styles.topNav} id='box'>
       <Image alt='' src={cover} fill sizes='auto' className={styles.cover} />
-      <Image alt='logo' className='contain' style={{ zIndex: 100 }} src={logo} height={80} width={60} />
+      <Image alt='logo' onClick={() => router.push('/')} className='contain' style={{ zIndex: 100, cursor: 'pointer' }} src={logo} height={80} width={60} />
       <nav className={menuToggled ? styles.change : styles.none}>
         {Object.keys(member).length > 0 ?
           <>

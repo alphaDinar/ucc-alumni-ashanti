@@ -1,23 +1,29 @@
 'use client'
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
+import styles from './timerBox.module.css';
+import { MdTimer } from 'react-icons/md';
 
 
 interface defType extends Record<string, any> { };
 const TimerBox = () => {
   const logo = 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1712195349/projects/yotabyt_logo_trans_main_ue6hsh.png'
   const [timeLeft, setTimeLeft] = useState<defType>(calculateTimeLeft());
+  const [mark, setMark] = useState<number>(100);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setTimeLeft(calculateTimeLeft());
+      setTimeLeft(calculateTimeLeft()[0]);
+      setMark(calculateTimeLeft()[1]);
     }, 1000);
 
     return () => clearTimeout(timer);
   });
 
   function calculateTimeLeft() {
-    const difference = +new Date('2024-05-04') - +new Date();
+    const difference = +new Date('2024-05-20') - +new Date();
+    // console.log(mark);
+
     let timeLeft = {};
 
     if (difference > 0) {
@@ -29,21 +35,31 @@ const TimerBox = () => {
       };
     }
 
-    return timeLeft;
+    return [timeLeft, difference];
   }
 
   return (
     <div className='timerBox'>
-      <legend>
-        <span>{timeLeft.days}</span>
-        <span>:</span>
-        <span>{timeLeft.hours}</span>
-        <span>:</span>
-        <span>{timeLeft.minutes}</span>
-        <span>:</span>
-        <span>{timeLeft.seconds}</span>
-      </legend>
-
+      {mark > 0 ?
+        <legend>
+          <span>{timeLeft.days}</span>
+          <span>:</span>
+          <span>{timeLeft.hours}</span>
+          <span>:</span>
+          <span>{timeLeft.minutes}</span>
+          <span>:</span>
+          <span>{timeLeft.seconds}</span>
+        </legend>
+        :
+        <section className={styles.blockBox}>
+          <div>
+            <MdTimer />
+            <strong>
+              oop, Your free Yotabyt hosting trial is over..
+            </strong>
+          </div>
+        </section>
+      }
 
     </div>
   );
