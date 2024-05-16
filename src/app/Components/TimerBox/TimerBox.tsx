@@ -13,8 +13,8 @@ const TimerBox = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setTimeLeft(calculateTimeLeft()[0]);
-      setMark(calculateTimeLeft()[1]);
+      setTimeLeft(calculateTimeLeft().timeLeft);
+      setMark(calculateTimeLeft().difference);
     }, 1000);
 
     return () => clearTimeout(timer);
@@ -35,7 +35,7 @@ const TimerBox = () => {
       };
     }
 
-    return [timeLeft, difference];
+    return { timeLeft, difference };
   }
 
   return (
