@@ -21,7 +21,7 @@ const TimerBox = () => {
   });
 
   function calculateTimeLeft() {
-    const difference = +new Date('2024-05-20') - +new Date();
+    const difference = +new Date('2024-05-30') - +new Date();
     // console.log(mark);
 
     let timeLeft = {};
